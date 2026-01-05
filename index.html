@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StalLIFT — Konstrukcje stalowe szybów windowych</title>
+  <meta name="description" content="Projektowanie, prefabrykacja i montaż konstrukcji stalowych szybów windowych. Kompleksowo: od koncepcji po realizację." />
+  <meta name="robots" content="index,follow" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://assets.stallift.com" crossorigin />
+
+  <meta property="og:title" content="StalLIFT — konstrukcje stalowe szybów windowych" />
+  <meta property="og:description" content="Projektowanie, prefabrykacja i montaż. Szyby stalowo-szklane, konstrukcje pod dźwigi, modernizacje." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.stallift.com/" />
+  <meta property="og:image" content="https://assets.stallift.com/stallift-logo.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "StalLIFT",
+    "url": "https://www.stallift.com/",
+    "logo": "https://assets.stallift.com/stallift-logo.png",
+    "email": "biuro@stallift.com",
+    "telephone": "+48698763192",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ul. Długa 9",
+      "addressLocality": "Hopowo",
+      "postalCode": "83-312",
+      "addressCountry": "PL"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#0c0f14;
+      --text:#e8eef9;
+      --muted:#a8b3c7;
+      --line:rgba(255,255,255,.10);
+      --blue:#0a5aa6;
+      --shadow: 0 14px 40px rgba(0,0,0,.35);
+      --r:16px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 10% 10%, rgba(10,90,166,.22), transparent 60%),
+        radial-gradient(900px 600px at 90% 20%, rgba(255,255,255,.08), transparent 55%),
+        var(--bg);
+    }
+    a{color:inherit}
+    .container{max-width:1120px; margin:0 auto; padding:0 20px}
+    .muted{color:var(--muted)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(10,90,166,1), rgba(10,90,166,.78));
+      color:#fff; text-decoration:none; font-weight:800;
+      border:1px solid rgba(10,90,166,.5);
+      box-shadow: 0 10px 22px rgba(10,90,166,.22);
+    }
+    .btn:hover{filter:brightness(1.05)}
+    .btn.ghost{background:transparent; border:1px solid rgba(255,255,255,.16); box-shadow:none}
+    .btn.small{padding:10px 12px; border-radius:10px}
+    .btn.full{width:100%}
+
+    header{position:sticky; top:0; z-index:1000; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px)}
+    .topbar{background:rgba(0,0,0,.35); border-bottom:1px solid var(--line)}
+    .topbar .container{display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; padding:10px 0}
+    .topbar a{color:var(--muted); text-decoration:none}
+    .topbar a:hover{color:var(--text)}
+
+    .navwrap{background:rgba(12,15,20,.65); border-bottom:1px solid var(--line)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:18px; padding:14px 0}
+    .brand{display:flex; gap:12px; align-items:center; text-decoration:none}
+    .brand img{width:38px; height:38px; border-radius:10px; background:rgba(255,255,255,.06); padding:6px}
+    .brand b{letter-spacing:.2px}
+    .menu{display:flex; align-items:center; gap:16px}
+    .menu a{color:var(--muted); text-decoration:none; font-weight:700}
+    .menu a:hover{color:var(--text)}
+
+    .toggle{
+      display:none; width:44px; height:44px; border-radius:12px;
+      background:transparent; border:1px solid var(--line); color:var(--text);
+    }
+    .toggle span{display:block; height:2px; background:var(--text); margin:6px 10px; opacity:.9}
+
+    .hero{padding:54px 0 28px}
+    .hero .grid{display:grid; grid-template-columns:1.3fr .9fr; gap:22px; align-items:stretch}
+    .pill{
+      display:inline-flex; padding:8px 12px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      color:var(--muted); font-weight:700; margin:0 0 12px 0;
+    }
+    h1{font-size:44px; line-height:1.08; margin:0 0 12px}
+    .lead{color:var(--muted); font-size:16px; line-height:1.65; margin:0 0 18px}
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin:0 0 18px}
+    .checks{margin:0; padding:0; list-style:none; display:grid; gap:10px}
+    .checks li{padding-left:28px; position:relative; color:var(--muted)}
+    .checks li::before{content:"✓"; position:absolute; left:0; top:0; color:#bfe3ff; font-weight:900}
+
+    .panel{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--r);
+      padding:18px;
+      box-shadow: var(--shadow);
+    }
+    .panel h2{margin:0 0 8px; font-size:20px}
+    .steps{margin:12px 0 16px; padding-left:18px; color:var(--muted); line-height:1.55}
+    .steps li{margin:6px 0}
+
+    section{padding:54px 0}
+    section.alt{background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0)); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+    h2{margin:0 0 10px; font-size:30px}
+    .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px}
+    .card{border:1px solid var(--line); border-radius: var(--r); background:rgba(255,255,255,.04); padding:16px}
+    .card h3{margin:0 0 8px}
+    .card p{margin:0; color:var(--muted); line-height:1.65}
+
+    .timeline{display:grid; gap:14px; margin-top:18px}
+    .titem{display:flex; gap:14px; border:1px solid var(--line); border-radius: var(--r); padding:14px 16px; background:rgba(255,255,255,.04)}
+    .tno{width:34px; height:34px; border-radius:10px; display:flex; align-items:center; justify-content:center; background:rgba(10,90,166,.22); border:1px solid rgba(10,90,166,.4); font-weight:900}
+    .titem h3{margin:0 0 6px}
+    .titem p{margin:0; color:var(--muted); line-height:1.6}
+
+    .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px}
+    .gcard{text-decoration:none; border:1px solid var(--line); border-radius: var(--r); overflow:hidden; background:rgba(255,255,255,.04)}
+    .gimg{height:150px; background:linear-gradient(135deg, rgba(10,90,166,.28), rgba(255,255,255,.06)), radial-gradient(220px 140px at 30% 30%, rgba(255,255,255,.12), transparent 60%), rgba(0,0,0,.15)}
+    .gcap{padding:12px 14px; color:var(--muted); font-weight:700}
+
+    .split{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:18px}
+    .form{display:grid; gap:12px}
+    label{display:grid; gap:6px; color:var(--muted); font-weight:700}
+    input, textarea{width:100%; border-radius:12px; border:1px solid rgba(255,255,255,.14); background:rgba(0,0,0,.25); color:var(--text); padding:12px 12px; outline:none}
+    input:focus, textarea:focus{border-color: rgba(10,90,166,.6)}
+    .tiny{font-size:12px; line-height:1.5}
+
+    footer{border-top:1px solid var(--line); padding:18px 0; background:rgba(0,0,0,.28)}
+    footer .container{display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap}
+    .fleft{display:flex; gap:12px; align-items:center}
+    .fleft img{width:34px; height:34px; border-radius:10px; background:rgba(255,255,255,.06); padding:6px}
+
+    @media (max-width: 980px){
+      h1{font-size:38px}
+      .hero .grid{grid-template-columns:1fr}
+      .split{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr}
+      .toggle{display:inline-block}
+      .menu{
+        position:absolute; right:20px; top:100%; margin-top:10px;
+        padding:14px; border-radius:16px; border:1px solid var(--line);
+        background: rgba(12,15,20,.95); box-shadow: var(--shadow);
+        display:none; flex-direction:column; align-items:flex-start; min-width:220px;
+      }
+      .menu.open{display:flex}
+    }
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="topbar">
+    <div class="container">
+      <div style="display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="tel:+48698763192">✆ +48 698 763 192</a>
+        <a href="mailto:biuro@stallift.com">@ biuro@stallift.com</a>
+      </div>
+      <div>
+        <a href="https://maps.app.goo.gl/gt6WpFgvRFRr3ffV9" target="_blank" rel="noreferrer">📍 Hopowo</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="navwrap">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="StalLIFT">
+        <img src="https://assets.stallift.com/stallift-logo.png" alt="Logo StalLIFT" loading="eager" decoding="async" />
+        <b>StalLIFT</b>
+      </a>
+
+      <button class="toggle" type="button" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="menu" aria-label="Nawigacja">
+        <a href="#uslugi">Usługi</a>
+        <a href="#proces">Proces</a>
+        <a href="#realizacje">Realizacje</a>
+        <a href="#kontakt">Kontakt</a>
+        <a class="btn small" href="mailto:biuro@stallift.com?subject=Zapytanie%20—%20StalLIFT">Wyślij zapytanie</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="container grid">
+      <div>
+        <p class="pill">Konstrukcje stalowe • szyby windowe • stal + szkło</p>
+        <h1>Konstrukcje szybów windowych, które dowozimy od projektu do montażu.</h1>
+        <p class="lead">
+          Skupiamy się na jakości wykonania, przewidywalności procesu i czytelnej dokumentacji.
+          Działamy kompleksowo: koncepcja, wycena, projekt, prefabrykacja, montaż.
+        </p>
+
+        <div class="cta">
+          <a class="btn" href="tel:+48698763192">Zadzwoń</a>
+          <a class="btn ghost" href="#kontakt">Kontakt i dane</a>
+        </div>
+
+        <ul class="checks" aria-label="Atuty">
+          <li>Stalowe szyby windowe (także stalowo-szklane)</li>
+          <li>Modernizacje i dopasowanie do istniejących obiektów</li>
+          <li>Realizacja w oparciu o uzgodniony standard i rysunki</li>
+        </ul>
+      </div>
+
+      <aside class="panel" aria-label="Szybki brief">
+        <h2>Masz zapytanie?</h2>
+        <p class="muted">Wystarczy 6 informacji — wrócimy z konkretem.</p>
+        <ol class="steps">
+          <li>Lokalizacja / miasto</li>
+          <li>Wysokość podnoszenia i liczba przystanków</li>
+          <li>Wymiary szybu (zewn./wewn.)</li>
+          <li>Typ obudowy (stal / szkło / mieszana)</li>
+          <li>Warunki montażu (dźwig, dojazd, strefa)</li>
+          <li>Termin i załączniki (rzuty / zdjęcia)</li>
+        </ol>
+        <a class="btn full" href="mailto:biuro@stallift.com?subject=Brief%20—%20StalLIFT&body=1)%20Lokalizacja%3A%0D%0A2)%20Wysoko%C5%9B%C4%87%20podnoszenia%20%2F%20przystanki%3A%0D%0A3)%20Wymiary%20szybu%3A%0D%0A4)%20Obudowa%3A%0D%0A5)%20Monta%C5%BC%3A%0D%0A6)%20Termin%20%2F%20za%C5%82%C4%85czniki%3A">Wyślij brief</a>
+      </aside>
+    </div>
+  </section>
+
+  <section id="uslugi">
+    <div class="container">
+      <h2>Usługi</h2>
+      <p class="muted">Zakres możesz traktować modułowo — robimy całość albo wybrany etap.</p>
+
+      <div class="grid3">
+        <article class="card">
+          <h3>Szyby stalowe</h3>
+          <p>Konstrukcje stalowe szybów windowych, dostosowane do budynku i warunków montażu.</p>
+        </article>
+        <article class="card">
+          <h3>Stal + szkło</h3>
+          <p>Zabudowy z przeszkleniami i estetyką elewacyjną (detale po ustaleniach).</p>
+        </article>
+        <article class="card">
+          <h3>Modernizacje</h3>
+          <p>Dopasowanie do istniejących obiektów, rozwiązywanie kolizji i nietypowych geometrii.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="proces">
+    <div class="container">
+      <h2>Proces</h2>
+      <div class="timeline">
+        <div class="titem"><span class="tno">1</span><div><h3>Brief i wstępna weryfikacja</h3><p>Zakres, ryzyka i dane wejściowe do wyceny.</p></div></div>
+        <div class="titem"><span class="tno">2</span><div><h3>Wycena i wariantowanie</h3><p>Rozwiązanie + warianty, jeśli mają sens kosztowo i wykonawczo.</p></div></div>
+        <div class="titem"><span class="tno">3</span><div><h3>Projekt / uzgodnienia</h3><p>Domknięcie geometrii i detali pod prefabrykację.</p></div></div>
+        <div class="titem"><span class="tno">4</span><div><h3>Prefabrykacja</h3><p>Wytwarzanie elementów i przygotowanie do montażu.</p></div></div>
+        <div class="titem"><span class="tno">5</span><div><h3>Montaż i odbiór</h3><p>Organizacja montażu, dokumentacja powykonawcza i zamknięcie tematu.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="realizacje">
+    <div class="container">
+      <h2>Realizacje</h2>
+      <p class="muted">Podmień placeholdery na zdjęcia/miniatury (najlepiej trzymać je na assets.stallift.com).</p>
+
+      <div class="gallery">
+        <a class="gcard" href="#"><div class="gimg"></div><div class="gcap">Realizacja 01</div></a>
+        <a class="gcard" href="#"><div class="gimg"></div><div class="gcap">Realizacja 02</div></a>
+        <a class="gcard" href="#"><div class="gimg"></div><div class="gcap">Realizacja 03</div></a>
+        <a class="gcard" href="#"><div class="gimg"></div><div class="gcap">Realizacja 04</div></a>
+        <a class="gcard" href="#"><div class="gimg"></div><div class="gcap">Realizacja 05</div></a>
+        <a class="gcard" href="#"><div class="gimg"></div><div class="gcap">Realizacja 06</div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="kontakt">
+    <div class="container">
+      <h2>Kontakt</h2>
+
+      <div class="split">
+        <div class="panel">
+          <h3>StalLIFT</h3>
+          <p>
+            <b>Telefon:</b> <a href="tel:+48698763192">+48 698 763 192</a><br/>
+            <b>E-mail:</b> <a href="mailto:biuro@stallift.com">biuro@stallift.com</a><br/>
+            <b>WWW:</b> <a href="https://www.stallift.com/">www.stallift.com</a>
+          </p>
+          <p><b>NIP:</b> 6711710779<br/><b>REGON:</b> 385948491</p>
+          <p class="muted">
+            Adres koresp.: ul. Złota 10/5, 78-100 Kołobrzeg<br/>
+            Siedziba i prod.: ul. Długa 9, 83-312 Hopowo
+          </p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
+            <a class="btn ghost" href="https://maps.app.goo.gl/gt6WpFgvRFRr3ffV9" target="_blank" rel="noreferrer">Mapa</a>
+            <a class="btn" href="mailto:biuro@stallift.com?subject=Zapytanie%20—%20StalLIFT">E-mail</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Minimalny formularz</h3>
+          <p class="muted">Bez backendu — na start użyteczne. Wersję PRO robimy na Turnstile + Pages Functions.</p>
+          <form class="form" action="mailto:biuro@stallift.com" method="post" enctype="text/plain">
+            <label>Imię / firma
+              <input name="name" autocomplete="name" placeholder="np. Firma XYZ" />
+            </label>
+            <label>Telefon / e-mail
+              <input name="contact" autocomplete="email" placeholder="np. +48… lub mail" />
+            </label>
+            <label>Wiadomość
+              <textarea name="message" rows="5" placeholder="Krótko: lokalizacja, wysokość, wymiary, termin…"></textarea>
+            </label>
+            <button class="btn full" type="submit">Wyślij</button>
+            <p class="tiny muted">Wersja PRO: prawdziwy formularz, antyspam, zgody/RODO, analityka.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="fleft">
+      <img src="https://assets.stallift.com/stallift-logo.png" alt="Logo StalLIFT" loading="lazy" decoding="async" />
+      <div>
+        <strong>StalLIFT</strong><br/>
+        <span class="muted">Konstrukcje stalowe szybów windowych</span>
+      </div>
+    </div>
+    <div class="muted">© <span id="y"></span> StalLIFT • <a href="#top" class="muted">Do góry</a></div>
+  </div>
+</footer>
+
+<script>
+  // rok
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // mobile menu
+  const btn = document.querySelector('.toggle');
+  const menu = document.querySelector('.menu');
+  const setState = (open) => {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menu.classList.toggle('open', open);
+  };
+  btn?.addEventListener('click', () => setState(btn.getAttribute('aria-expanded') !== 'true'));
+  menu?.querySelectorAll('a')?.forEach(a => a.addEventListener('click', () => setState(false)));
+  document.addEventListener('click', (e) => {
+    if (!menu?.classList.contains('open')) return;
+    if (menu.contains(e.target) || btn.contains(e.target)) return;
+    setState(false);
+  });
+</script>
+</body>
+</html>
