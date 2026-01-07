@@ -1,58 +1,113 @@
-// functions/api/contact.js
+export async function onRequestOptions() {
+  return new Response(null, {
+    status: 204,
+    headers: {
+      "access-control-allow-origin": "*",
+      "access-control-allow-methods": "POST, OPTIONS",
+      "access-control-allow-headers": "content-type",
+    },
+  });
+}
+
+function json(data, status = 200) {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: { "content-type": "application/json; charset=utf-8" },
+  });
+}
+
+function pickClientIp(req) {
+  return (
+    req.headers.get("cf-connecting-ip") ||
+    (req.headers.get("x-forwarded-for") || "").split(",")[0].trim() ||
+    ""
+  );
+}
+
+async function verifyTurnstile({ secret, token, ip }) {
+  if (!secret) return { ok: false, reason: "missing_turnstile_secret" };
+  if (!token) return { ok: false, reason: "missing_turnstile_token" };
+
+  const form = new FormData();
+  form.append("secret", secret);
+  form.append("response", token);
+  if (ip) form.append("remoteip", ip);
+
+  const r = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+    method: "POST",
+    body: form,
+  });
+
+  const out = await r.json().catch(() => ({}));
+  return { ok: !!out.success, out };
+}
+
+function sanitize(s, max = 5000) {
+  if (typeof s !== "string") return "";
+  return s.trim().slice(0, max);
+}
+
 export async function onRequestPost(context) {
   const { request, env } = context;
 
+  let payload = {};
+  const ct = (request.headers.get("content-type") || "").toLowerCase();
+
   try {
-    // Tylko JSON
-    const ct = request.headers.get("content-type") || "";
-    if (!ct.toLowerCase().includes("application/json")) {
-      return json({ ok: false, error: "Unsupported content-type" }, 415);
+    if (ct.includes("application/json")) {
+      payload = await request.json();
+    } else {
+      // fallback: form-data / urlencoded
+      const fd = await request.formData();
+      payload = Object.fromEntries(fd.entries());
     }
+  } catch {
+    return json({ ok: false, error: "invalid_payload" }, 400);
+  }
 
-    const body = await request.json().catch(() => ({}));
+  // Honeypot (jeśli bot wypełni ukryte pole, odrzucamy)
+  const honeypot = sanitize(payload.website, 200);
+  if (honeypot) return json({ ok: true }); // udajemy sukces, żeby bot nie próbował dalej
 
-    // Honeypot (ukryte pole anty-bot) — jeśli wypełnione, udaj sukces i nic nie rób
-    if (typeof body.website === "string" && body.website.trim().length > 0) {
-      return json({ ok: true }, 200);
-    }
+  const name = sanitize(payload.name, 200);
+  const email = sanitize(payload.email, 200);
+  const phone = sanitize(payload.phone, 200);
+  const company = sanitize(payload.company, 200);
+  const subject = sanitize(payload.subject, 200);
+  const message = sanitize(payload.message, 8000);
 
-    // Walidacja pól
-    const name = s(body.name, 120);
-    const email = s(body.email, 180);
-    const phone = s(body.phone, 80);
-    const company = s(body.company, 160);
-    const subject = s(body.subject, 160);
-    const message = s(body.message, 4000);
+  if (!name || !email || !message) {
+    return json({ ok: false, error: "missing_fields" }, 400);
+  }
 
-    if (!name || !email || !message) {
-      return json({ ok: false, error: "Missing required fields" }, 400);
-    }
-    if (!isEmail(email)) {
-      return json({ ok: false, error: "Invalid email" }, 400);
-    }
+  // Turnstile token – standardowo Turnstile daje "cf-turnstile-response"
+  const turnstileToken =
+    sanitize(payload["cf-turnstile-response"], 5000) ||
+    sanitize(payload.turnstileToken, 5000);
 
-    // Turnstile (opcjonalnie, ale zalecane)
-    // Front wysyła token jako turnstileToken (z input[name="cf-turnstile-response"])
-    if (env.TURNSTILE_SECRET_KEY) {
-      const token = s(body.turnstileToken, 4096);
-      if (!token) return json({ ok: false, error: "Turnstile token missing" }, 400);
+  const ip = pickClientIp(request);
+  const ts = await verifyTurnstile({
+    secret: env.TURNSTILE_SECRET_KEY,
+    token: turnstileToken,
+    ip,
+  });
 
-      const ok = await verifyTurnstile(env.TURNSTILE_SECRET_KEY, token);
-      if (!ok) return json({ ok: false, error: "Turnstile verification failed" }, 403);
-    }
+  if (!ts.ok) {
+    return json({ ok: false, error: "turnstile_failed", detail: ts.out || ts.reason }, 403);
+  }
 
-    // Wysyłka maila przez Resend (zalecane)
-    // Wymaga: env.RESEND_API_KEY oraz sensownego FROM w Twojej domenie (zweryfikowanej w Resend)
-    if (!env.RESEND_API_KEY) {
-      return json({ ok: false, error: "Server not configured (RESEND_API_KEY missing)" }, 500);
-    }
+  // Resend
+  const resendKey = env.RESEND_API_KEY;
+  const to = env.CONTACT_TO;
+  const from = env.CONTACT_FROM;
 
-    const to = env.CONTACT_TO || "kontakt@stallift.com";
-    const from = env.CONTACT_FROM || "StalLIFT <kontakt@stallift.com>";
-    const subj = `[StalLIFT] ${subject || "Zapytanie z formularza"}`;
+  if (!resendKey || !to || !from) {
+    return json({ ok: false, error: "missing_env_vars" }, 500);
+  }
 
-    const text =
-`Nowe zapytanie z formularza:
+  const subj = `[StalLIFT] ${subject || "Nowe zapytanie z formularza"}`;
+  const text =
+`Nowe zapytanie z formularza (stallift.com)
 
 Imię: ${name}
 E-mail: ${email}
@@ -64,64 +119,25 @@ Wiadomość:
 ${message}
 `;
 
-    const rr = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        authorization: `Bearer ${env.RESEND_API_KEY}`,
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        from,
-        to: [to],
-        subject: subj,
-        text,
-        reply_to: email,
-      }),
-    });
-
-    if (!rr.ok) {
-      const t = await rr.text().catch(() => "");
-      return json({ ok: false, error: "Email provider error", details: t.slice(0, 800) }, 502);
-    }
-
-    return json({ ok: true }, 200);
-  } catch (e) {
-    return json({ ok: false, error: "Server error" }, 500);
-  }
-}
-
-function json(obj, status = 200) {
-  return new Response(JSON.stringify(obj), {
-    status,
-    headers: {
-      "content-type": "application/json; charset=utf-8",
-      "cache-control": "no-store",
-    },
-  });
-}
-
-function s(v, max) {
-  if (typeof v !== "string") return "";
-  const x = v.trim();
-  return x.length > max ? x.slice(0, max) : x;
-}
-
-function isEmail(x) {
-  // prosta walidacja “wystarczająca” na formularz
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(x);
-}
-
-async function verifyTurnstile(secret, token) {
-  const form = new URLSearchParams();
-  form.set("secret", secret);
-  form.set("response", token);
-
-  const r = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+  const rr = await fetch("https://api.resend.com/emails", {
     method: "POST",
-    body: form,
+    headers: {
+      authorization: `Bearer ${resendKey}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      from,
+      to: [to],
+      subject: subj,
+      text,
+      reply_to: email, // wg API Resend :contentReference[oaicite:1]{index=1}
+    }),
   });
 
-  if (!r.ok) return false;
-  const data = await r.json().catch(() => null);
-  return !!(data && data.success);
+  if (!rr.ok) {
+    const err = await rr.text().catch(() => "");
+    return json({ ok: false, error: "resend_failed", detail: err }, 502);
+  }
+
+  return json({ ok: true });
 }
