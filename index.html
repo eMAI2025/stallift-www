@@ -1,436 +1,212 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="StalLIFT — konstrukcje stalowe szybów windowych. Projekt, produkcja, montaż. Konstrukcje przeszklone i obudowy." />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://stallift.com/" />
-
-  <meta property="og:title" content="StalLIFT — Konstrukcje stalowe" />
-  <meta property="og:description" content="Konstrukcje stalowe szybów windowych. Projekt, produkcja, montaż." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://stallift.com/" />
-
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>StalLIFT — Konstrukcje stalowe</title>
+  <meta name="description" content="StalLIFT — konstrukcje stalowe pod szyby windowe, obudowy, fasady i montaż." />
+  <link rel="icon" href="/favicon.svg" />
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="canonical" href="https://stallift.com/" />
 
   <style>
     :root{
-      --bg0:#0b0f14;
-      --bg1:#0f1621;
-      --panel:#101a27cc;
-      --line:rgba(255,255,255,.10);
-      --text:#e9eef5;
-      --muted:rgba(233,238,245,.72);
-      --muted2:rgba(233,238,245,.55);
-      --brand:#1f7bd8;
-      --brand2:#0e5fb6;
-      --ok:#2ad48f;
-      --bad:#ff6b6b;
-      --r:16px;
-      --r2:12px;
-      --shadow:0 18px 60px rgba(0,0,0,.55);
-      --shadow2:0 10px 30px rgba(0,0,0,.45);
-      --glass: blur(14px);
-      --ease:cubic-bezier(.22,.9,.2,1);
+      --bg:#0b1220; --panel:#0f1b2f; --txt:#eaf1ff; --muted:#9fb1cf;
+      --brand:#1c6fff; --line:rgba(255,255,255,.10); --ok:#2ecc71; --bad:#ff5a5f;
+      --r:18px;
     }
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--text);
-      background:
-        radial-gradient(1100px 700px at 70% 10%, rgba(31,123,216,.18), transparent 60%),
-        radial-gradient(900px 600px at 20% 20%, rgba(42,212,143,.08), transparent 60%),
-        linear-gradient(135deg, var(--bg0), var(--bg1));
-      overflow-x:hidden;
-    }
-    a{ color:inherit; text-decoration:none; }
-    .wrap{ max-width:1150px; margin:0 auto; padding: 18px 18px 64px; }
-
-    /* topbar */
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: var(--glass);
-      background: linear-gradient(180deg, rgba(8,12,18,.74), rgba(8,12,18,.40));
-      border-bottom:1px solid var(--line);
-    }
-    .topbar-inner{
-      max-width:1150px; margin:0 auto;
-      padding:12px 18px;
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      min-width: 220px;
-    }
-    .brand .logo{
-      width:38px; height:38px; border-radius:12px;
-      background: rgba(255,255,255,.06);
-      border:1px solid var(--line);
-      display:grid; place-items:center;
-      overflow:hidden;
-      box-shadow: var(--shadow2);
-    }
-    .brand .logo img{ width:86%; height:86%; object-fit:contain; }
-    .brand .txt{ display:flex; flex-direction:column; line-height:1.05; }
-    .brand .txt b{ font-size:14px; letter-spacing:.4px; }
-    .brand .txt span{ font-size:12px; color:var(--muted2); }
-
-    .nav{
-      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .nav a{
-      font-size:13px;
-      color: rgba(233,238,245,.86);
-      padding:9px 10px;
-      border-radius:12px;
-      border:1px solid transparent;
-      transition: background 150ms var(--ease), border-color 150ms var(--ease), transform 150ms var(--ease);
-    }
-    .nav a:hover{
-      background: rgba(255,255,255,.06);
-      border-color: rgba(255,255,255,.10);
-      transform: translateY(-1px);
-    }
-
-    /* cards */
-    .grid{ display:grid; gap:18px; }
-    .hero{
-      margin-top:18px;
-      grid-template-columns: 1.15fr .85fr;
-      align-items:stretch;
-    }
-    .card{
-      border-radius: var(--r);
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-      position:relative;
-    }
-    .card::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(700px 300px at 10% 0%, rgba(31,123,216,.22), transparent 60%);
-      pointer-events:none;
-      opacity:.9;
-    }
-    .hero-left{ padding:26px 24px; min-height: 420px; display:flex; flex-direction:column; justify-content:space-between; }
-    .kicker{
-      display:flex; align-items:center; gap:10px;
-      font-size:12px; letter-spacing:.4px;
-      color: rgba(233,238,245,.78);
-      text-transform: uppercase;
-    }
-    .dot{ width:9px; height:9px; border-radius:50%; background: var(--ok); box-shadow: 0 0 0 6px rgba(42,212,143,.10); }
-    h1{ margin:14px 0 12px; font-size: 40px; line-height:1.06; letter-spacing:-.8px; font-weight: 860; }
-    .sub{ color: var(--muted); font-size:15px; line-height:1.6; max-width: 56ch; margin:0 0 14px; }
-    .cta{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 12px; }
-    .btn{
-      border:0; cursor:pointer;
-      border-radius: 14px;
-      padding: 12px 14px;
-      font-weight: 760;
-      letter-spacing:.2px;
-      display:inline-flex; align-items:center; justify-content:center;
-      transition: transform 150ms var(--ease), box-shadow 150ms var(--ease), background 150ms var(--ease), border-color 150ms var(--ease);
-      user-select:none;
-    }
-    .btn.primary{
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      color:#fff;
-      box-shadow: 0 12px 30px rgba(31,123,216,.22);
-    }
-    .btn.primary:hover{ transform: translateY(-1px); box-shadow: 0 16px 40px rgba(31,123,216,.30); }
-    .btn.ghost{
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      color: rgba(233,238,245,.92);
-    }
-    .btn.ghost:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); }
-    .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 12px; }
-    .chip{
-      font-size:12px; color: rgba(233,238,245,.78);
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(10,14,20,.25);
-    }
-
-    .hero-right{ padding: 22px; display:flex; flex-direction:column; gap:12px; }
-    .stat{
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(10,14,20,.22);
-      padding: 14px 14px;
-    }
-    .stat b{ display:block; font-size:13px; margin-bottom:6px; }
-    .stat span{ color: var(--muted); font-size:13px; line-height:1.45; display:block; }
-
-    /* sections */
-    .section{ margin-top: 18px; }
-    .section .head{
-      display:flex; align-items:baseline; justify-content:space-between; gap:12px;
-      margin: 18px 4px 10px;
-    }
-    .section h2{ margin:0; font-size:18px; letter-spacing:.2px; }
-    .section p.lead{ margin:0; color: var(--muted2); font-size:13px; }
-
-    .cols3{ grid-template-columns: repeat(3, 1fr); }
-    .tile{ padding:16px 16px; }
-    .tile b{ display:block; margin-bottom:6px; }
-    .tile p{ margin:0; color: var(--muted); font-size:13px; line-height:1.55; }
-
-    /* contact */
-    .contact{ grid-template-columns: 1.05fr .95fr; }
-    .panel{ padding:18px; }
-    .panel h3{ margin:0 0 10px; font-size:16px; }
-    .muted{ color: var(--muted); font-size:13px; line-height:1.55; }
-    .tiny{ color: var(--muted2); font-size:12px; line-height:1.45; }
-
-    form{ display:grid; gap:10px; margin-top: 10px; }
-    input, textarea{
-      width:100%;
-      padding: 11px 12px;
-      border-radius: 12px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(10,14,20,.25);
-      color: var(--text);
-      outline:none;
-    }
-    input:focus, textarea:focus{
-      border-color: rgba(31,123,216,.40);
-      box-shadow: 0 0 0 4px rgba(31,123,216,.12);
-    }
-    textarea{ resize: vertical; min-height: 120px; }
-    .row2{ display:grid; grid-template-columns: 1fr 1fr; gap:10px; }
-    .actions{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-    .status{ min-height: 18px; font-size:13px; color: var(--muted); }
-
-    footer{
-      margin-top: 26px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      padding-top: 18px;
-      color: rgba(233,238,245,.62);
-      font-size: 12px;
-    }
-    footer .foot{
-      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
-    }
-    footer img{ height:26px; width:auto; opacity:.92; }
-
-    @media (max-width: 980px){
-      .hero{ grid-template-columns: 1fr; }
-      .contact{ grid-template-columns: 1fr; }
-      .cols3{ grid-template-columns: 1fr; }
-      h1{ font-size: 34px; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--txt);background:radial-gradient(1200px 600px at 20% 0%,rgba(28,111,255,.18),transparent 60%),var(--bg)}
+    a{color:inherit}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .brand img{width:44px;height:44px;border-radius:12px}
+    .brand b{font-size:18px;letter-spacing:.3px}
+    nav{display:flex;gap:14px;flex-wrap:wrap}
+    nav a{padding:10px 12px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--muted)}
+    nav a:hover{color:var(--txt);border-color:rgba(255,255,255,.22)}
+    .hero{margin-top:22px;display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid var(--line);border-radius:var(--r);padding:18px}
+    h1{margin:0 0 10px;font-size:36px;line-height:1.1}
+    p{margin:0 0 10px;color:var(--muted);line-height:1.55}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--txt);text-decoration:none}
+    .btn.primary{background:var(--brand);border-color:transparent}
+    .btn.ghost{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+    .pill{display:inline-block;font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+    .section{margin-top:18px}
+    .section h2{margin:0 0 10px;font-size:22px}
+    .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .kpi .x{padding:14px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.12)}
+    .kpi b{display:block;font-size:16px;margin-bottom:6px}
+    .kpi span{color:var(--muted);font-size:13px}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .form input,.form textarea{width:100%;padding:12px 12px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.18);color:var(--txt);outline:none}
+    .form textarea{min-height:120px;resize:vertical}
+    .form .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .form .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+    .small{font-size:12px;color:var(--muted)}
+    #contactStatus{margin-top:10px;font-size:13px}
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    footer{margin-top:18px;border-top:1px solid var(--line)}
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .kpi{grid-template-columns:1fr}
+      .two{grid-template-columns:1fr}
+      .form .row,.form .row3{grid-template-columns:1fr}
     }
   </style>
+
+  <!-- Turnstile (anti-bot) -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">
-        <div class="logo">
-          <img src="https://assets.stallift.com/stallift-logo.png" alt="Logo StalLIFT" loading="eager" decoding="async" />
+  <div class="wrap">
+    <header>
+      <a class="brand" href="/">
+        <img src="https://assets.stallift.com/stallift-logo.png" alt="Logo StalLIFT" loading="lazy" decoding="async" />
+        <div>
+          <b>StalLIFT</b><br />
+          <span class="pill">Konstrukcje stalowe</span>
         </div>
-        <div class="txt">
-          <b>StalLIFT</b>
-          <span>Konstrukcje stalowe</span>
-        </div>
-      </div>
-
-      <nav class="nav">
+      </a>
+      <nav>
         <a href="#oferta">Oferta</a>
         <a href="#proces">Proces</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main class="wrap">
-    <section class="grid hero">
-      <div class="card hero-left">
-        <div>
-          <div class="kicker"><span class="dot"></span>Projekt • produkcja • montaż</div>
-          <h1>Konstrukcje stalowe szybów windowych</h1>
-          <p class="sub">
-            Realizacje dla budownictwa mieszkaniowego i usługowego: konstrukcje stalowe, obudowy i rozwiązania przeszklone.
-            Pracujemy szybko, technicznie i z naciskiem na jakość wykonania.
-          </p>
-
-          <div class="cta">
-            <a class="btn primary" href="#kontakt">Zapytanie / wycena</a>
-            <a class="btn ghost" href="mailto:biuro@stallift.com?subject=Zapytanie%20—%20StalLIFT">E-mail</a>
-            <a class="btn ghost" href="https://maps.app.goo.gl/gt6WpFgvRFRr3ffV9" target="_blank" rel="noreferrer">Mapa</a>
-          </div>
-
-          <div class="chips">
-            <span class="chip">stal + szkło</span>
-            <span class="chip">produkcja w PL</span>
-            <span class="chip">montaż na budowie</span>
-            <span class="chip">dokumentacja</span>
-          </div>
-        </div>
-
-        <div class="tiny">
-          Uwaga: to jest wersja startowa strony. Formularz działa przez Cloudflare Pages Functions (bez mailto).
+    <section class="hero" id="top">
+      <div class="card">
+        <h1>Konstrukcje stalowe pod szyby windowe. Szybko, konkretnie, bez chaosu.</h1>
+        <p>Projekt, prefabrykacja, logistyka i montaż. Obsługa inwestycji mieszkaniowych i przemysłowych.</p>
+        <div class="cta">
+          <a class="btn primary" href="#kontakt">Wyślij zapytanie</a>
+          <a class="btn ghost" href="https://maps.app.goo.gl/gt6WpFgvRFRr3ffV9" target="_blank" rel="noreferrer">Mapa</a>
         </div>
       </div>
 
-      <aside class="card hero-right">
-        <div class="stat">
-          <b>Zakres</b>
-          <span>Konstrukcje stalowe szybów windowych, obudowy, elementy pod montaż, rozwiązania przeszklone.</span>
-        </div>
-        <div class="stat">
-          <b>Standard pracy</b>
-          <span>Ustalenia → pomiar → projekt → produkcja → montaż → odbiór.</span>
-        </div>
-        <div class="stat">
-          <b>Kontakt</b>
-          <span>Najlepiej: formularz + podstawowe parametry (lokalizacja, wysokość, wymiary, termin).</span>
-        </div>
-      </aside>
-    </section>
-
-    <section id="oferta" class="section">
-      <div class="head">
-        <h2>Oferta</h2>
-        <p class="lead">Minimum treści, maksimum konkretu.</p>
-      </div>
-
-      <div class="grid cols3">
-        <div class="card tile">
-          <b>Konstrukcja stalowa</b>
-          <p>Projekt i wykonanie konstrukcji nośnej szybu windowego wraz z detalami montażowymi.</p>
-        </div>
-        <div class="card tile">
-          <b>Obudowy / przeszklenia</b>
-          <p>Rozwiązania fasadowe i przeszklone dopasowane do architektury obiektu.</p>
-        </div>
-        <div class="card tile">
-          <b>Montaż i koordynacja</b>
-          <p>Montaż na obiekcie, koordynacja z ekipą dźwigową, dopięcie detali.</p>
+      <div class="card">
+        <div class="kpi">
+          <div class="x"><b>Jakość</b><span>kontrola wymiarów i detali</span></div>
+          <div class="x"><b>Termin</b><span>plan + bufor ryzyk</span></div>
+          <div class="x"><b>Transparentność</b><span>jasne uzgodnienia i zakres</span></div>
         </div>
       </div>
     </section>
 
-    <section id="proces" class="section">
-      <div class="head">
-        <h2>Proces</h2>
-        <p class="lead">Szybkość bez zgadywania.</p>
+    <section class="section card" id="oferta">
+      <h2>Oferta</h2>
+      <div class="grid">
+        <div class="x card">
+          <b>Szyby windowe (stal + szkło)</b>
+          <p class="small">Konstrukcja nośna, obudowa, detale montażowe.</p>
+        </div>
+        <div class="x card">
+          <b>Obudowy / fasady</b>
+          <p class="small">Rozwiązania systemowe, estetyka i funkcjonalność.</p>
+        </div>
+        <div class="x card">
+          <b>Montaż i logistyka</b>
+          <p class="small">Koordynacja dostaw, montaż, odbiory.</p>
+        </div>
       </div>
+    </section>
 
-      <div class="grid cols3">
-        <div class="card tile">
+    <section class="section card" id="proces">
+      <h2>Proces</h2>
+      <div class="two">
+        <div class="card">
           <b>1) Dane wejściowe</b>
-          <p>Lokalizacja, wysokość, wymiary, typ obudowy, termin, zdjęcia miejsca.</p>
+          <p class="small">Lokalizacja, wysokość, wymiary, typ obudowy, termin, zdjęcia miejsca.</p>
         </div>
-        <div class="card tile">
+        <div class="card">
           <b>2) Uzgodnienia</b>
-          <p>Warianty techniczne, doprecyzowanie zakresu, plan montażu i logistyka.</p>
-        </div>
-        <div class="card tile">
-          <b>3) Realizacja</b>
-          <p>Produkcja + montaż + odbiór. Dokumentacja i wsparcie po uruchomieniu.</p>
+          <p class="small">Warianty techniczne, montaż, logistyka, punkty krytyczne.</p>
         </div>
       </div>
     </section>
 
-    <section id="kontakt" class="section">
-      <div class="head">
-        <h2>Kontakt</h2>
-        <p class="lead">Formularz wysyła na e-mail (API). Bez „mailto form”.</p>
-      </div>
+    <section class="section card" id="kontakt">
+      <h2>Kontakt</h2>
 
-      <div class="grid contact">
-        <div class="card panel">
-          <h3>Dane</h3>
-          <p class="muted">
-            E-mail: <a href="mailto:biuro@stallift.com">biuro@stallift.com</a><br/>
-            Mapa: <a href="https://maps.app.goo.gl/gt6WpFgvRFRr3ffV9" target="_blank" rel="noreferrer">Google Maps</a>
-          </p>
-          <p class="tiny">
-            Jeśli chcesz, przełączymy docelową skrzynkę formularza na <b>kontakt@stallift.com</b> (polecam).
-          </p>
+      <div class="two">
+        <div class="card">
+          <b>Dane</b>
+          <p>E-mail: <a href="mailto:kontakt@stallift.com?subject=Zapytanie%20—%20StalLIFT">kontakt@stallift.com</a></p>
+          <p>Mapa: <a href="https://maps.app.goo.gl/gt6WpFgvRFRr3ffV9" target="_blank" rel="noreferrer">Google Maps</a></p>
+          <p class="small">Preferowane: formularz (antyspam + komplet danych). Alternatywnie: e-mail.</p>
         </div>
 
-        <div class="card panel">
-          <h3>Minimalny formularz</h3>
-          <p class="muted">Wypełnij krótko: lokalizacja, wysokość, wymiary, termin. Resztę doprecyzujemy.</p>
+        <div class="card">
+          <b>Formularz</b>
 
-          <form id="contactForm" method="post" action="/api/contact" novalidate>
-            <div class="row2">
-              <input name="name" autocomplete="name" required placeholder="Imię i nazwisko" />
-              <input name="email" type="email" autocomplete="email" required placeholder="E-mail" />
+          <form id="contactForm" class="form" method="post" action="/api/contact">
+            <div class="row">
+              <input name="name" required placeholder="Imię i nazwisko" autocomplete="name" />
+              <input name="email" type="email" required placeholder="Email" autocomplete="email" />
             </div>
-            <div class="row2">
-              <input name="phone" autocomplete="tel" placeholder="Telefon (opcjonalnie)" />
-              <input name="company" autocomplete="organization" placeholder="Firma (opcjonalnie)" />
-            </div>
-            <input name="subject" placeholder="Temat (opcjonalnie)" />
-            <textarea name="message" required placeholder="Wiadomość"></textarea>
 
-            <!-- honeypot (ukryte pole anty-bot) -->
+            <div class="row3" style="margin-top:10px">
+              <input name="phone" placeholder="Telefon (opcjonalnie)" autocomplete="tel" />
+              <input name="company" placeholder="Firma (opcjonalnie)" autocomplete="organization" />
+              <input name="subject" placeholder="Temat (opcjonalnie)" />
+            </div>
+
+            <textarea name="message" required placeholder="Wiadomość" style="margin-top:10px"></textarea>
+
+            <!-- honeypot -->
             <input name="website" tabindex="-1" autocomplete="off" style="display:none" />
 
-            <!-- Turnstile (wstaw SITE KEY) -->
-            <div class="cf-turnstile" data-sitekey="WSTAW_TUTAJ_TURNSTILE_SITE_KEY"></div>
-
-            <div class="actions">
-              <button class="btn primary" type="submit">Wyślij</button>
-              <a class="btn ghost" href="mailto:biuro@stallift.com?subject=Zapytanie%20—%20StalLIFT">E-mail zamiast formularza</a>
+            <!-- Turnstile: WSTAW SWÓJ SITE KEY -->
+            <div style="margin-top:10px">
+              <div class="cf-turnstile" data-sitekey="WSTAW_TUTAJ_TURNSTILE_SITE_KEY"></div>
             </div>
 
-            <div id="contactStatus" class="status"></div>
-            <div class="tiny">Wersja PRO: ograniczenie częstotliwości + dodatkowe logowanie zdarzeń.</div>
+            <button class="btn primary" type="submit" style="margin-top:10px">Wyślij</button>
+            <div id="contactStatus"></div>
           </form>
+
+          <p class="small" style="margin-top:10px">
+            Po wysłaniu: dostaniesz potwierdzenie na stronie. Jeśli blokuje antyspam — użyj maila.
+          </p>
         </div>
       </div>
     </section>
 
-    <footer>
-      <div class="foot">
-        <div>© <span id="y"></span> StalLIFT</div>
-        <img src="https://assets.stallift.com/stallift-logo.png" alt="Logo StalLIFT" loading="lazy" decoding="async" />
-      </div>
+    <footer class="wrap">
+      <p class="small">© StalLIFT</p>
     </footer>
-  </main>
-
-  <!-- Turnstile -->
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  </div>
 
   <script>
-    // rok w stopce
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // submit formularza => /api/contact (JSON)
     (() => {
       const form = document.getElementById('contactForm');
       const statusEl = document.getElementById('contactStatus');
       if (!form || !statusEl) return;
 
-      const setStatus = (msg, ok) => {
-        statusEl.textContent = msg || '';
-        statusEl.style.color = ok === true ? 'rgba(42,212,143,.95)' : (ok === false ? 'rgba(255,107,107,.95)' : 'rgba(233,238,245,.72)');
-      };
-
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        setStatus('Wysyłanie…', null);
+        statusEl.className = '';
+        statusEl.textContent = 'Wysyłanie...';
 
-        const fd = new FormData(form);
-        const payload = Object.fromEntries(fd.entries());
-
-        // token Turnstile (wstrzykiwany jako pole cf-turnstile-response)
-        payload.turnstileToken = fd.get('cf-turnstile-response') || '';
+        const btn = form.querySelector('button[type="submit"]');
+        if (btn) btn.disabled = true;
 
         try {
+          const fd = new FormData(form);
+          const payload = Object.fromEntries(fd.entries());
+
+          // Turnstile token (Turnstile dodaje input: name="cf-turnstile-response")
+          const ts = form.querySelector('input[name="cf-turnstile-response"]');
+          payload.turnstileToken = ts ? (ts.value || '') : '';
+
           const r = await fetch('/api/contact', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
@@ -438,21 +214,26 @@
           });
 
           const out = await r.json().catch(() => ({}));
-          if (!r.ok || out.ok !== true) {
-            setStatus('Błąd wysyłki. Spróbuj ponownie lub użyj e-mail.', false);
+          if (!r.ok || !out.ok) {
+            statusEl.className = 'bad';
+            statusEl.textContent = 'Błąd wysyłki. Spróbuj ponownie lub napisz na kontakt@stallift.com.';
             return;
           }
 
-          setStatus('Wysłano. Dziękujemy.', true);
+          statusEl.className = 'ok';
+          statusEl.textContent = 'Wysłano. Dziękujemy.';
           form.reset();
 
-          // Turnstile reset (opcjonalnie)
+          // po resecie token i tak wygasa — reset widget jeśli jest
           if (window.turnstile) {
             const widget = form.querySelector('.cf-turnstile');
             if (widget) window.turnstile.reset(widget);
           }
         } catch (err) {
-          setStatus('Błąd sieci. Spróbuj ponownie.', false);
+          statusEl.className = 'bad';
+          statusEl.textContent = 'Błąd sieci. Spróbuj ponownie.';
+        } finally {
+          if (btn) btn.disabled = false;
         }
       });
     })();
