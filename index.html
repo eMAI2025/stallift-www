@@ -4,65 +4,55 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>StalLIFT — Konstrukcje stalowe</title>
-  <meta name="description" content="StalLIFT — konstrukcje stalowe pod szyby windowe, obudowy, fasady i montaż." />
-  <link rel="icon" href="/favicon.svg" />
-  <meta name="theme-color" content="#0b1220" />
-  <link rel="canonical" href="https://stallift.com/" />
-
+  <meta name="description" content="StalLIFT — konstrukcje stalowe szybów windowych i obudowy. Zapytaj przez formularz kontaktowy." />
   <style>
     :root{
-      --bg:#0b1220; --panel:#0f1b2f; --txt:#eaf1ff; --muted:#9fb1cf;
-      --brand:#1c6fff; --line:rgba(255,255,255,.10); --ok:#2ecc71; --bad:#ff5a5f;
-      --r:18px;
+      --bg:#070B12; --bg2:#0B1220; --card:rgba(255,255,255,.06);
+      --line:rgba(255,255,255,.10); --txt:#EAF0FF; --mut:#AAB6D6;
+      --acc:#5DA3FF;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--txt);background:radial-gradient(1200px 600px at 20% 0%,rgba(28,111,255,.18),transparent 60%),var(--bg)}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:
+      radial-gradient(1200px 600px at 20% 0%, rgba(93,163,255,.20), transparent 60%),
+      radial-gradient(900px 500px at 80% 10%, rgba(147,93,255,.14), transparent 55%),
+      var(--bg);
+      color:var(--txt)
+    }
     a{color:inherit}
-    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 16px 60px}
+    header{display:flex;align-items:center;gap:14px;justify-content:space-between}
     .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-    .brand img{width:44px;height:44px;border-radius:12px}
-    .brand b{font-size:18px;letter-spacing:.3px}
-    nav{display:flex;gap:14px;flex-wrap:wrap}
-    nav a{padding:10px 12px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--muted)}
-    nav a:hover{color:var(--txt);border-color:rgba(255,255,255,.22)}
-    .hero{margin-top:22px;display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid var(--line);border-radius:var(--r);padding:18px}
-    h1{margin:0 0 10px;font-size:36px;line-height:1.1}
-    p{margin:0 0 10px;color:var(--muted);line-height:1.55}
-    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--txt);text-decoration:none}
-    .btn.primary{background:var(--brand);border-color:transparent}
-    .btn.ghost{color:var(--muted)}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
-    .pill{display:inline-block;font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
-    .section{margin-top:18px}
-    .section h2{margin:0 0 10px;font-size:22px}
-    .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .kpi .x{padding:14px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.12)}
-    .kpi b{display:block;font-size:16px;margin-bottom:6px}
-    .kpi span{color:var(--muted);font-size:13px}
-    .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .form input,.form textarea{width:100%;padding:12px 12px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.18);color:var(--txt);outline:none}
-    .form textarea{min-height:120px;resize:vertical}
-    .form .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .form .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-    .small{font-size:12px;color:var(--muted)}
-    #contactStatus{margin-top:10px;font-size:13px}
-    .ok{color:var(--ok)}
-    .bad{color:var(--bad)}
-    footer{margin-top:18px;border-top:1px solid var(--line)}
-    @media (max-width: 920px){
-      .hero{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
-      .kpi{grid-template-columns:1fr}
-      .two{grid-template-columns:1fr}
-      .form .row,.form .row3{grid-template-columns:1fr}
+    .brand img{width:38px;height:38px;border-radius:10px}
+    .brand b{display:block;line-height:1.1}
+    nav a{color:var(--mut);text-decoration:none;margin-left:14px}
+    nav a:hover{color:var(--txt)}
+    .hero{margin-top:26px;padding:24px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03))}
+    .hero h1{margin:0 0 10px;font-size:28px}
+    .hero p{margin:0;color:var(--mut);max-width:80ch}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+    .card{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:16px}
+    .card h2{margin:0 0 10px;font-size:18px}
+    .muted{color:var(--mut)}
+    .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border-radius:12px;border:1px solid var(--line);text-decoration:none;color:var(--txt);background:rgba(255,255,255,.04)}
+    .btn:hover{border-color:rgba(93,163,255,.6)}
+    .btn.primary{background:rgba(93,163,255,.18);border-color:rgba(93,163,255,.45)}
+    .steps{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .step{padding:14px;border-radius:14px;border:1px dashed rgba(255,255,255,.18)}
+    .step b{display:block;margin-bottom:6px}
+    form{display:grid;gap:10px}
+    input, textarea{width:100%;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.25);color:var(--txt);outline:none}
+    input:focus, textarea:focus{border-color:rgba(93,163,255,.7)}
+    textarea{min-height:120px;resize:vertical}
+    .tiny{font-size:12px;color:var(--mut)}
+    #contactStatus{min-height:18px}
+    footer{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    footer img{height:26px}
+    @media (max-width:900px){
+      .grid, .steps{grid-template-columns:1fr}
+      nav{display:none}
     }
   </style>
-
-  <!-- Turnstile (anti-bot) -->
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body>
@@ -71,8 +61,8 @@
       <a class="brand" href="/">
         <img src="https://assets.stallift.com/stallift-logo.png" alt="Logo StalLIFT" loading="lazy" decoding="async" />
         <div>
-          <b>StalLIFT</b><br />
-          <span class="pill">Konstrukcje stalowe</span>
+          <b>StalLIFT</b>
+          <span class="muted">Konstrukcje stalowe</span>
         </div>
       </a>
       <nav>
@@ -82,161 +72,112 @@
       </nav>
     </header>
 
-    <section class="hero" id="top">
+    <section class="hero" id="oferta">
+      <h1>Konstrukcje stalowe szybów windowych i obudowy</h1>
+      <p>
+        Zbieramy dane, uzgadniamy wariant techniczny i przygotowujemy ofertę. Jeśli chcesz — wyślij zapytanie przez formularz,
+        a wrócimy z pytaniami doprecyzowującymi i propozycją rozwiązania.
+      </p>
+      <div class="btnrow">
+        <a class="btn primary" href="#kontakt">Przejdź do formularza</a>
+        <a class="btn" href="mailto:kontakt@stallift.com?subject=Zapytanie%20%E2%80%94%20StalLIFT">E-mail</a>
+      </div>
+    </section>
+
+    <section class="grid" id="proces">
       <div class="card">
-        <h1>Konstrukcje stalowe pod szyby windowe. Szybko, konkretnie, bez chaosu.</h1>
-        <p>Projekt, prefabrykacja, logistyka i montaż. Obsługa inwestycji mieszkaniowych i przemysłowych.</p>
-        <div class="cta">
-          <a class="btn primary" href="#kontakt">Wyślij zapytanie</a>
-          <a class="btn ghost" href="https://maps.app.goo.gl/gt6WpFgvRFRr3ffV9" target="_blank" rel="noreferrer">Mapa</a>
+        <h2>Proces</h2>
+        <div class="steps">
+          <div class="step">
+            <b>1) Dane wejściowe</b>
+            <div class="muted">Lokalizacja, wysokość, wymiary, typ obudowy, termin, zdjęcia miejsca.</div>
+          </div>
+          <div class="step">
+            <b>2) Uzgodnienia</b>
+            <div class="muted">Warianty techniczne, montaż i logistyka, doprecyzowanie detali.</div>
+          </div>
         </div>
       </div>
 
-      <div class="card">
-        <div class="kpi">
-          <div class="x"><b>Jakość</b><span>kontrola wymiarów i detali</span></div>
-          <div class="x"><b>Termin</b><span>plan + bufor ryzyk</span></div>
-          <div class="x"><b>Transparentność</b><span>jasne uzgodnienia i zakres</span></div>
-        </div>
-      </div>
-    </section>
+      <div class="card" id="kontakt">
+        <h2>Kontakt</h2>
+        <p class="muted" style="margin-top:0">
+          E-mail: <a href="mailto:kontakt@stallift.com">kontakt@stallift.com</a><br/>
+          Mapa: <a href="https://maps.app.goo.gl/gt6WpFgvRFRr3ffV9" target="_blank" rel="noreferrer">Google Maps</a>
+        </p>
 
-    <section class="section card" id="oferta">
-      <h2>Oferta</h2>
-      <div class="grid">
-        <div class="x card">
-          <b>Szyby windowe (stal + szkło)</b>
-          <p class="small">Konstrukcja nośna, obudowa, detale montażowe.</p>
-        </div>
-        <div class="x card">
-          <b>Obudowy / fasady</b>
-          <p class="small">Rozwiązania systemowe, estetyka i funkcjonalność.</p>
-        </div>
-        <div class="x card">
-          <b>Montaż i logistyka</b>
-          <p class="small">Koordynacja dostaw, montaż, odbiory.</p>
-        </div>
-      </div>
-    </section>
+        <h2 style="margin-top:14px">Formularz</h2>
+        <p class="muted" style="margin-top:0">Wysyłka przez backend (/api/contact) + Turnstile anty-bot.</p>
 
-    <section class="section card" id="proces">
-      <h2>Proces</h2>
-      <div class="two">
-        <div class="card">
-          <b>1) Dane wejściowe</b>
-          <p class="small">Lokalizacja, wysokość, wymiary, typ obudowy, termin, zdjęcia miejsca.</p>
-        </div>
-        <div class="card">
-          <b>2) Uzgodnienia</b>
-          <p class="small">Warianty techniczne, montaż, logistyka, punkty krytyczne.</p>
-        </div>
+        <form id="contactForm" method="post" action="/api/contact">
+          <input name="name" required autocomplete="name" placeholder="Imię i nazwisko" />
+          <input name="email" type="email" required autocomplete="email" placeholder="E-mail" />
+          <input name="phone" autocomplete="tel" placeholder="Telefon (opcjonalnie)" />
+          <input name="company" autocomplete="organization" placeholder="Firma (opcjonalnie)" />
+          <input name="subject" placeholder="Temat (opcjonalnie)" />
+          <textarea name="message" required placeholder="Wiadomość"></textarea>
+
+          <!-- honeypot (ukryte pole anty-bot) -->
+          <input name="website" tabindex="-1" autocomplete="off" style="display:none" />
+
+          <!-- Turnstile: WSTAW SWÓJ SITE KEY -->
+          <div style="margin-top:10px">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAACLBExVmIO9fqnHR"></div>
+          </div>
+
+          <button class="btn primary" type="submit">Wyślij</button>
+          <div id="contactStatus" class="tiny"></div>
+          <div class="tiny">Wiadomość trafi na: <b>kontakt@stallift.com</b></div>
+        </form>
       </div>
     </section>
 
-    <section class="section card" id="kontakt">
-      <h2>Kontakt</h2>
-
-      <div class="two">
-        <div class="card">
-          <b>Dane</b>
-          <p>E-mail: <a href="mailto:kontakt@stallift.com?subject=Zapytanie%20—%20StalLIFT">kontakt@stallift.com</a></p>
-          <p>Mapa: <a href="https://maps.app.goo.gl/gt6WpFgvRFRr3ffV9" target="_blank" rel="noreferrer">Google Maps</a></p>
-          <p class="small">Preferowane: formularz (antyspam + komplet danych). Alternatywnie: e-mail.</p>
-        </div>
-
-        <div class="card">
-          <b>Formularz</b>
-
-          <form id="contactForm" class="form" method="post" action="/api/contact">
-            <div class="row">
-              <input name="name" required placeholder="Imię i nazwisko" autocomplete="name" />
-              <input name="email" type="email" required placeholder="Email" autocomplete="email" />
-            </div>
-
-            <div class="row3" style="margin-top:10px">
-              <input name="phone" placeholder="Telefon (opcjonalnie)" autocomplete="tel" />
-              <input name="company" placeholder="Firma (opcjonalnie)" autocomplete="organization" />
-              <input name="subject" placeholder="Temat (opcjonalnie)" />
-            </div>
-
-            <textarea name="message" required placeholder="Wiadomość" style="margin-top:10px"></textarea>
-
-            <!-- honeypot -->
-            <input name="website" tabindex="-1" autocomplete="off" style="display:none" />
-
-            <!-- Turnstile: WSTAW SWÓJ SITE KEY -->
-            <div style="margin-top:10px">
-              <div class="cf-turnstile" data-sitekey="WSTAW_TUTAJ_TURNSTILE_SITE_KEY"></div>
-            </div>
-
-            <button class="btn primary" type="submit" style="margin-top:10px">Wyślij</button>
-            <div id="contactStatus"></div>
-          </form>
-
-          <p class="small" style="margin-top:10px">
-            Po wysłaniu: dostaniesz potwierdzenie na stronie. Jeśli blokuje antyspam — użyj maila.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <footer class="wrap">
-      <p class="small">© StalLIFT</p>
+    <footer>
+      <div class="muted">© StalLIFT</div>
+      <img src="https://assets.stallift.com/stallift-logo.png" alt="Logo StalLIFT" loading="lazy" decoding="async" />
     </footer>
   </div>
 
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script>
-    (() => {
-      const form = document.getElementById('contactForm');
-      const statusEl = document.getElementById('contactStatus');
-      if (!form || !statusEl) return;
+  (() => {
+    const form = document.getElementById('contactForm');
+    const statusEl = document.getElementById('contactStatus');
+    if (!form || !statusEl) return;
 
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        statusEl.className = '';
-        statusEl.textContent = 'Wysyłanie...';
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.textContent = 'Wysyłanie…';
 
-        const btn = form.querySelector('button[type="submit"]');
-        if (btn) btn.disabled = true;
+      const fd = new FormData(form);
+      const payload = Object.fromEntries(fd.entries());
 
-        try {
-          const fd = new FormData(form);
-          const payload = Object.fromEntries(fd.entries());
+      try {
+        const r = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
 
-          // Turnstile token (Turnstile dodaje input: name="cf-turnstile-response")
-          const ts = form.querySelector('input[name="cf-turnstile-response"]');
-          payload.turnstileToken = ts ? (ts.value || '') : '';
-
-          const r = await fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(payload),
-          });
-
-          const out = await r.json().catch(() => ({}));
-          if (!r.ok || !out.ok) {
-            statusEl.className = 'bad';
-            statusEl.textContent = 'Błąd wysyłki. Spróbuj ponownie lub napisz na kontakt@stallift.com.';
-            return;
-          }
-
-          statusEl.className = 'ok';
-          statusEl.textContent = 'Wysłano. Dziękujemy.';
-          form.reset();
-
-          // po resecie token i tak wygasa — reset widget jeśli jest
-          if (window.turnstile) {
-            const widget = form.querySelector('.cf-turnstile');
-            if (widget) window.turnstile.reset(widget);
-          }
-        } catch (err) {
-          statusEl.className = 'bad';
-          statusEl.textContent = 'Błąd sieci. Spróbuj ponownie.';
-        } finally {
-          if (btn) btn.disabled = false;
+        const out = await r.json().catch(() => ({}));
+        if (!r.ok || !out.ok) {
+          statusEl.textContent = 'Błąd wysyłki. Spróbuj ponownie lub napisz na kontakt@stallift.com.';
+          return;
         }
-      });
-    })();
+
+        statusEl.textContent = 'Wysłano. Dziękujemy.';
+        form.reset();
+
+        // Turnstile: po resecie odśwież widżet (jeśli dostępny)
+        if (window.turnstile) {
+          const widget = form.querySelector('.cf-turnstile');
+          if (widget) window.turnstile.reset(widget);
+        }
+      } catch (err) {
+        statusEl.textContent = 'Błąd sieci. Spróbuj ponownie.';
+      }
+    });
+  })();
   </script>
 </body>
 </html>
