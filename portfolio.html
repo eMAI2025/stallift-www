@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pl" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Portfolio — StalLIFT</title>
+<meta name="description" content="Portfolio realizacji StalLIFT w formie flipbook (przewijany katalog)." />
+<link rel="canonical" href="https://stallift.com/portfolio.html" />
+<meta property="og:title" content="Portfolio — StalLIFT" />
+<meta property="og:description" content="Portfolio realizacji StalLIFT w formie flipbook (przewijany katalog)." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://stallift.com/portfolio.html" />
+<meta property="og:image" content="https://assets.stallift.com/stallift-logo.png" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/css/site.css" />
+<link rel="stylesheet" href="/flipbook/flipbook.css" />
+
+</head>
+<body>
+<header class="header">
+  <div class="header__inner">
+    <a class="brand" href="/">
+      <img class="brand__logo" src="https://assets.stallift.com/stallift-logo.png" alt="Logo StalLIFT" loading="lazy" decoding="async" />
+      <div class="brand__meta">
+        <b>StalLIFT</b>
+        <span>Konstrukcje stalowe • obudowy</span>
+      </div>
+    </a>
+
+    <nav class="nav" aria-label="Nawigacja">
+      <a href="/o-nas.html">O nas</a>
+      <a href="/realizacje.html">Realizacje</a>
+      <a href="/portfolio.html" style="color:var(--c-text);background:rgba(127,127,127,.12)">Portfolio</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/kontakt.html">Kontakt</a>
+    </nav>
+
+    <div class="actions">
+      <a class="btn btn--ghost" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn btn--ghost" href="https://www.facebook.com/p/StalLIFT-100064140156308/" target="_blank" rel="noreferrer">Facebook</a>
+      <a class="btn" href="https://app.stallift.com" title="Przejście do aplikacji (Etap II)">Zaloguj</a>
+      <a class="btn btn--primary" href="https://app.stallift.com" title="Kalkulator ofertowy (Etap II)">Kalkulator</a>
+
+      <button id="themeToggle" class="btn iconbtn" type="button" aria-label="Przełącz motyw" title="Jasny / Ciemny">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M12 2v2.5M12 19.5V22M22 12h-2.5M4.5 12H2M19.8 4.2l-1.8 1.8M6 18l-1.8 1.8M19.8 19.8 18 18M6 6 4.2 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <h1>Portfolio (flipbook)</h1>
+    <p>
+      Katalog jest dostępny jako flipbook (strony + miniatury). Jeżeli potrzebujesz materiałów do konkretnej inwestycji — napisz przez formularz.
+    </p>
+    <div class="hero__row">
+      <a class="btn btn--primary" href="/kontakt.html">Kontakt</a>
+      <a class="btn" href="/realizacje.html">Realizacje</a>
+    </div>
+  </section>
+
+  <section class="card" style="margin-top:16px">
+    <div id="flipbookMount"></div>
+    <div class="tiny" style="margin-top:10px">
+      Flipbook ładuje obrazy w miarę przewijania. Przy pierwszym wejściu może chwilę doczytywać miniatury.
+    </div>
+  </section>
+</main>
+<footer class="footer container">
+  <div class="footer__links">
+    <span class="muted">© StalLIFT</span>
+    <a href="/polityka-prywatnosci.html">Polityka prywatności</a>
+  </div>
+  <div class="footer__links">
+    <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+    <a href="https://www.facebook.com/p/StalLIFT-100064140156308/" target="_blank" rel="noreferrer">Facebook</a>
+    <a href="mailto:kontakt@stallift.com">kontakt@stallift.com</a>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+<script type="module" src="/js/portfolio.js"></script>
+</body>
+</html>

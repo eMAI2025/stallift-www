@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.stallift.com/sitemap.xml
+Sitemap: https://stallift.com/sitemap.xml

@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>StalLIFT — Konstrukcje stalowe i obudowy</title>
-<meta name="description" content="StalLIFT — konstrukcje stalowe szybów windowych i obudowy. Zapytaj przez formularz kontaktowy." />
-<link rel="canonical" href="https://stallift.com/" />
-<meta property="og:title" content="StalLIFT — Konstrukcje stalowe i obudowy" />
-<meta property="og:description" content="StalLIFT — konstrukcje stalowe szybów windowych i obudowy. Zapytaj przez formularz kontaktowy." />
+<title>Kontakt — StalLIFT</title>
+<meta name="description" content="Kontakt z firmą StalLIFT. Formularz działa przez Pages Function (/api/contact) + Turnstile." />
+<link rel="canonical" href="https://stallift.com/kontakt.html" />
+<meta property="og:title" content="Kontakt — StalLIFT" />
+<meta property="og:description" content="Kontakt z firmą StalLIFT. Formularz działa przez Pages Function (/api/contact) + Turnstile." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://stallift.com/" />
+<meta property="og:url" content="https://stallift.com/kontakt.html" />
 <meta property="og:image" content="https://assets.stallift.com/stallift-logo.png" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="stylesheet" href="/css/site.css" />
@@ -32,7 +32,7 @@
       <a href="/realizacje.html">Realizacje</a>
       <a href="/portfolio.html">Portfolio</a>
       <a href="/blog.html">Blog</a>
-      <a href="/kontakt.html">Kontakt</a>
+      <a href="/kontakt.html" style="color:var(--c-text);background:rgba(127,127,127,.12)">Kontakt</a>
     </nav>
 
     <div class="actions">
@@ -53,65 +53,50 @@
 
 <main class="container">
   <section class="hero">
-    <h1>Konstrukcje stalowe szybów windowych i obudowy</h1>
-    <p>
-      Zbieramy dane, uzgadniamy wariant techniczny i przygotowujemy ofertę. Jeśli chcesz — wyślij zapytanie przez formularz,
-      a wrócimy z pytaniami doprecyzowującymi i propozycją rozwiązania.
-    </p>
-    <div class="hero__row">
-      <a class="btn btn--primary" href="/kontakt.html">Wyślij zapytanie</a>
-      <a class="btn" href="/portfolio.html">Zobacz portfolio (flipbook)</a>
-      <a class="btn" href="mailto:kontakt@stallift.com?subject=Zapytanie%20%E2%80%94%20StalLIFT">E-mail</a>
-    </div>
+    <h1>Kontakt</h1>
+    <p>Wyślij zapytanie — wrócimy z pytaniami doprecyzowującymi i propozycją rozwiązania.</p>
   </section>
 
-  <section class="grid">
+  <section class="cols">
     <div class="card">
-      <h2>Zakres</h2>
-      <p class="muted" style="margin-top:0">
-        Konstrukcje stalowe skręcane i spawane oraz zabudowy: szklane, nieprzezierne, daszki szklane, portale drzwiowe.
-      </p>
-      <div class="tags">
-        <span class="tag">Skręcane</span>
-        <span class="tag">Spawane</span>
-        <span class="tag">Szklane</span>
-        <span class="tag">Nieprzezierne</span>
-        <span class="tag">Daszki szklane</span>
-        <span class="tag">Portale drzwiowe</span>
-      </div>
-
-      <div class="kpis" style="margin-top:14px">
-        <div class="kpi">
-          <b>1) Dane wejściowe</b>
-          <div class="muted">Lokalizacja, wymiary, typ zabudowy, termin, zdjęcia miejsca.</div>
-        </div>
-        <div class="kpi">
-          <b>2) Uzgodnienia</b>
-          <div class="muted">Warianty techniczne, montaż i logistyka, doprecyzowanie detali.</div>
-        </div>
-        <div class="kpi">
-          <b>3) Oferta</b>
-          <div class="muted">Zakres, harmonogram, warunki realizacji.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>Szybki kontakt</h2>
+      <h2>Dane</h2>
       <p class="muted" style="margin-top:0">
         E-mail: <a href="mailto:kontakt@stallift.com">kontakt@stallift.com</a><br/>
         Mapa: <a href="https://maps.app.goo.gl/gt6WpFgvRFRr3ffV9" target="_blank" rel="noreferrer">Google Maps</a>
       </p>
+      <div class="note"><b>Wskazówka:</b> dołącz lokalizację, gabaryty, typ zabudowy, termin oraz zdjęcia miejsca.</div>
+    </div>
 
-      <div class="note">
-        <b>Etap II:</b> linki <b>Zaloguj</b> i <b>Kalkulator</b> prowadzą do <code>app.stallift.com</code>.
-        Aplikacja jest dopinana w kolejnym etapie.
-      </div>
+    <div class="card">
+      <h2>Formularz</h2>
+      <p class="muted" style="margin-top:0">Wysyłka przez backend <code>/api/contact</code> + Turnstile anty-bot.</p>
 
-      <div class="hero__row" style="margin-top:14px">
-        <a class="btn btn--primary" href="/realizacje.html">Realizacje</a>
-        <a class="btn" href="/o-nas.html">O nas</a>
-      </div>
+      <form data-contact-form method="post" action="/api/contact" class="form" novalidate>
+        <input class="input" name="name" required autocomplete="name" placeholder="Imię i nazwisko" />
+        <input class="input" name="email" type="email" required autocomplete="email" placeholder="E-mail" />
+        <input class="input" name="phone" autocomplete="tel" placeholder="Telefon (opcjonalnie)" />
+        <input class="input" name="company" autocomplete="organization" placeholder="Firma (opcjonalnie)" />
+        <input class="input" name="subject" placeholder="Temat (opcjonalnie)" />
+        <textarea name="message" required placeholder="Wiadomość"></textarea>
+
+        <input name="website" tabindex="-1" autocomplete="off" style="display:none" />
+
+        <label class="check">
+          <input class="js-consent" type="checkbox" required />
+          <span class="tiny">
+            Wyrażam zgodę na przetwarzanie danych w celu odpowiedzi na zapytanie, zgodnie z
+            <a href="/polityka-prywatnosci.html">polityką prywatności</a>.
+          </span>
+        </label>
+
+        <div style="margin-top:4px">
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAACLBExVmIO9fqnHR"></div>
+        </div>
+
+        <button class="btn btn--primary" type="submit">Wyślij</button>
+        <div class="js-status tiny" style="min-height:18px"></div>
+        <div class="tiny">Wiadomość trafi na: <b>kontakt@stallift.com</b></div>
+      </form>
     </div>
   </section>
 </main>
@@ -128,5 +113,7 @@
 </footer>
 
 <script src="/js/site.js" defer></script>
+<script src="/js/contact.js" defer></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>

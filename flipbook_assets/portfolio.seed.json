@@ -1,0 +1,219 @@
+{
+  "source_pdf": "portfolio pełne.pdf",
+  "page_count": 22,
+  "assets": [
+    {
+      "page": 1,
+      "full": "page-01-w1400.jpg",
+      "thumb": "page-01-w480.jpg"
+    },
+    {
+      "page": 2,
+      "full": "page-02-w1400.jpg",
+      "thumb": "page-02-w480.jpg"
+    },
+    {
+      "page": 3,
+      "full": "page-03-w1400.jpg",
+      "thumb": "page-03-w480.jpg"
+    },
+    {
+      "page": 4,
+      "full": "page-04-w1400.jpg",
+      "thumb": "page-04-w480.jpg"
+    },
+    {
+      "page": 5,
+      "full": "page-05-w1400.jpg",
+      "thumb": "page-05-w480.jpg"
+    },
+    {
+      "page": 6,
+      "full": "page-06-w1400.jpg",
+      "thumb": "page-06-w480.jpg"
+    },
+    {
+      "page": 7,
+      "full": "page-07-w1400.jpg",
+      "thumb": "page-07-w480.jpg"
+    },
+    {
+      "page": 8,
+      "full": "page-08-w1400.jpg",
+      "thumb": "page-08-w480.jpg"
+    },
+    {
+      "page": 9,
+      "full": "page-09-w1400.jpg",
+      "thumb": "page-09-w480.jpg"
+    },
+    {
+      "page": 10,
+      "full": "page-10-w1400.jpg",
+      "thumb": "page-10-w480.jpg"
+    },
+    {
+      "page": 11,
+      "full": "page-11-w1400.jpg",
+      "thumb": "page-11-w480.jpg"
+    },
+    {
+      "page": 12,
+      "full": "page-12-w1400.jpg",
+      "thumb": "page-12-w480.jpg"
+    },
+    {
+      "page": 13,
+      "full": "page-13-w1400.jpg",
+      "thumb": "page-13-w480.jpg"
+    },
+    {
+      "page": 14,
+      "full": "page-14-w1400.jpg",
+      "thumb": "page-14-w480.jpg"
+    },
+    {
+      "page": 15,
+      "full": "page-15-w1400.jpg",
+      "thumb": "page-15-w480.jpg"
+    },
+    {
+      "page": 16,
+      "full": "page-16-w1400.jpg",
+      "thumb": "page-16-w480.jpg"
+    },
+    {
+      "page": 17,
+      "full": "page-17-w1400.jpg",
+      "thumb": "page-17-w480.jpg"
+    },
+    {
+      "page": 18,
+      "full": "page-18-w1400.jpg",
+      "thumb": "page-18-w480.jpg"
+    },
+    {
+      "page": 19,
+      "full": "page-19-w1400.jpg",
+      "thumb": "page-19-w480.jpg"
+    },
+    {
+      "page": 20,
+      "full": "page-20-w1400.jpg",
+      "thumb": "page-20-w480.jpg"
+    },
+    {
+      "page": 21,
+      "full": "page-21-w1400.jpg",
+      "thumb": "page-21-w480.jpg"
+    },
+    {
+      "page": 22,
+      "full": "page-22-w1400.jpg",
+      "thumb": "page-22-w480.jpg"
+    }
+  ],
+  "projects_seed": [
+    {
+      "name": "PKP Sierakowice",
+      "category": [
+        "konstrukcje_stalowe_skreicane",
+        "zabudowy_szklane"
+      ],
+      "pages": [
+        4,
+        5
+      ]
+    },
+    {
+      "name": "Starostwo Powiatowe Tuchola",
+      "category": [
+        "konstrukcje_stalowe_skreicane",
+        "zabudowy_szklane"
+      ],
+      "pages": [
+        6,
+        7
+      ]
+    },
+    {
+      "name": "Stacja kolejowa Rumia Janowo",
+      "category": [
+        "konstrukcje_stalowe_skreicane",
+        "zabudowy_szklane",
+        "daszki_szklane"
+      ],
+      "pages": [
+        8,
+        9
+      ]
+    },
+    {
+      "name": "Budynek Nanotechnologii – Politechnika Gdańska",
+      "category": [
+        "konstrukcje_stalowe_spawane",
+        "zabudowy_szklane",
+        "portale_drzwiowe"
+      ],
+      "pages": [
+        10,
+        11
+      ]
+    },
+    {
+      "name": "Akademia Pomorska – Słupsk",
+      "category": [
+        "konstrukcje_stalowe_skreicane",
+        "zabudowy_szklane"
+      ],
+      "pages": [
+        12,
+        13
+      ]
+    },
+    {
+      "name": "Kaszubski Inkubator Przedsiębiorczości – Kościerzyna",
+      "category": [
+        "konstrukcje_stalowe_spawane",
+        "zabudowy_szklane"
+      ],
+      "pages": [
+        14,
+        15
+      ]
+    },
+    {
+      "name": "Wydział Nauk Technicznych UWM",
+      "category": [
+        "konstrukcje_stalowe_skreicane",
+        "zabudowy_szklane"
+      ],
+      "pages": [
+        16,
+        17
+      ]
+    },
+    {
+      "name": "Centrum Dystrybucyjne LPP – Pruszcz Gdański",
+      "category": [
+        "konstrukcje_stalowe_spawane",
+        "zabudowy_nieprzezierne"
+      ],
+      "pages": [
+        18,
+        19
+      ]
+    },
+    {
+      "name": "Rekomendacje",
+      "category": [
+        "referencje"
+      ],
+      "pages": [
+        20,
+        21
+      ]
+    }
+  ],
+  "notes": "Seed pod WWW (flipbook + mapowanie stron)."
+}
