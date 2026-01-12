@@ -1,0 +1,21 @@
+<!-- 1) Dodaj w <head> -->
+<link rel="stylesheet" href="/flipbook/flipbook.css">
+
+<!-- 2) Wstaw w treści strony (np. Home) -->
+<section id="portfolio">
+  <h2>Katalog / Portfolio</h2>
+  <div id="flipbookMount"></div>
+</section>
+
+<!-- 3) Na końcu body (lub w bundlerze) -->
+<script type="module">
+  import { initFlipbook } from "/flipbook/flipbook.js";
+  initFlipbook({
+    mount: "#flipbookMount",
+    jsonUrl: "/flipbook_assets/portfolio.seed.json",
+    baseUrl: "/flipbook_assets",
+    title: "StalLIFT — Katalog",
+    previewCount: 6,
+    // pdfUrl: "/flipbook_assets/portfolio-stallift.pdf" // opcjonalnie, jeśli wrzucisz PDF obok
+  });
+</script>
