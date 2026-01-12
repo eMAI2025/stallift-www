@@ -57,7 +57,6 @@ export async function onRequestPost(context) {
     if (ct.includes("application/json")) {
       payload = await request.json();
     } else {
-      // fallback: form-data / urlencoded
       const fd = await request.formData();
       payload = Object.fromEntries(fd.entries());
     }
@@ -65,9 +64,8 @@ export async function onRequestPost(context) {
     return json({ ok: false, error: "invalid_payload" }, 400);
   }
 
-  // Honeypot (jeśli bot wypełni ukryte pole, odrzucamy)
   const honeypot = sanitize(payload.website, 200);
-  if (honeypot) return json({ ok: true }); // udajemy sukces, żeby bot nie próbował dalej
+  if (honeypot) return json({ ok: true });
 
   const name = sanitize(payload.name, 200);
   const email = sanitize(payload.email, 200);
@@ -80,7 +78,6 @@ export async function onRequestPost(context) {
     return json({ ok: false, error: "missing_fields" }, 400);
   }
 
-  // Turnstile token – standardowo Turnstile daje "cf-turnstile-response"
   const turnstileToken =
     sanitize(payload["cf-turnstile-response"], 5000) ||
     sanitize(payload.turnstileToken, 5000);
@@ -96,7 +93,6 @@ export async function onRequestPost(context) {
     return json({ ok: false, error: "turnstile_failed", detail: ts.out || ts.reason }, 403);
   }
 
-  // Resend
   const resendKey = env.RESEND_API_KEY;
   const to = env.CONTACT_TO;
   const from = env.CONTACT_FROM;
@@ -130,7 +126,7 @@ ${message}
       to: [to],
       subject: subj,
       text,
-      reply_to: email, // wg API Resend :contentReference[oaicite:1]{index=1}
+      reply_to: email,
     }),
   });
 
