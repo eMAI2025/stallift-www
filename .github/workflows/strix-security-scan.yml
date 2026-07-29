@@ -1,0 +1,111 @@
+name: Strix manual security scan
+
+on:
+  workflow_dispatch:
+    inputs:
+      scan_mode:
+        description: Zakres skanu Strix
+        required: true
+        default: quick
+        type: choice
+        options:
+          - quick
+          - standard
+
+permissions:
+  contents: read
+
+concurrency:
+  group: strix-security-${{ github.repository }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  scan:
+    name: Strix source-code scan
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+
+    env:
+      STRIX_VERSION: "1.4.1"
+      STRIX_LLM: ${{ vars.STRIX_LLM_MODEL || 'openai/gpt-5.4' }}
+      LLM_API_KEY: ${{ secrets.STRIX_LLM_API_KEY }}
+      STRIX_TELEMETRY: "false"
+      STRIX_REASONING_EFFORT: "medium"
+      STRIX_IMAGE: "ghcr.io/usestrix/strix-sandbox:1.1.0"
+      STRIX_SANDBOX_MEM_LIMIT: "4g"
+      STRIX_SANDBOX_CPUS: "2"
+      STRIX_SANDBOX_PIDS_LIMIT: "512"
+      STRIX_SANDBOX_LOG_MAX_SIZE: "20m"
+      STRIX_SANDBOX_LOG_MAX_FILE: "2"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Validate configuration
+        run: |
+          set -euo pipefail
+          if [[ -z "${LLM_API_KEY}" ]]; then
+            echo "::error::Brak sekretu STRIX_LLM_API_KEY w ustawieniach repozytorium."
+            exit 1
+          fi
+          if [[ ! "${{ inputs.scan_mode }}" =~ ^(quick|standard)$ ]]; then
+            echo "::error::Niedozwolony tryb skanowania."
+            exit 1
+          fi
+
+      - name: Install pinned Strix release
+        run: |
+          set -euo pipefail
+          mkdir -p "${HOME}/.local/bin"
+          archive="/tmp/strix-${STRIX_VERSION}-linux-x86_64.tar.gz"
+          curl --fail --silent --show-error --location \
+            --proto '=https' --tlsv1.2 \
+            "https://github.com/usestrix/strix/releases/download/v${STRIX_VERSION}/strix-${STRIX_VERSION}-linux-x86_64.tar.gz" \
+            --output "${archive}"
+          tar -xzf "${archive}" -C /tmp
+          install -m 0755 \
+            "/tmp/strix-${STRIX_VERSION}-linux-x86_64" \
+            "${HOME}/.local/bin/strix"
+          echo "${HOME}/.local/bin" >> "${GITHUB_PATH}"
+          "${HOME}/.local/bin/strix" --version
+          docker pull "${STRIX_IMAGE}"
+
+      - name: Run authorized source scan
+        run: |
+          set +e
+          strix -n \
+            --target . \
+            --scan-mode "${{ inputs.scan_mode }}" \
+            --scope-mode full \
+            --instruction-file .github/strix-code-scan-rules.md
+          status=$?
+          echo "${status}" > /tmp/strix-exit-code
+          exit 0
+
+      - name: Upload Strix report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: strix-report-${{ github.run_id }}
+          path: strix_runs/
+          if-no-files-found: warn
+          retention-days: 14
+          include-hidden-files: false
+
+      - name: Enforce scan result
+        if: always()
+        run: |
+          set -euo pipefail
+          status="$(cat /tmp/strix-exit-code 2>/dev/null || echo 99)"
+          if [[ "${status}" -ne 0 ]]; then
+            echo "::error::Strix zakończył skan kodem ${status}. Sprawdź raport i log zadania."
+            exit "${status}"
+          fi
